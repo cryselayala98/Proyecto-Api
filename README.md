@@ -22,5 +22,11 @@ Para probar la aplicación en modo desarrollo:
 
 Para acceder a la documentación de los endpoints
 
+[Ver en ApiHub](https://app.swaggerhub.com/apis/Criselayala/ApiDoc/1.0#/servers)
+
+
 `http://localhost:8080/api/webjars/swagger-ui/index.html`
+
+
+
     
