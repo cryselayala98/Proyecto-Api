@@ -1,6 +1,6 @@
 # Proyecto Api
 
-[Docker Hub](https://hub.docker.com/r/criselayala98/api)
+[Docker Hub](hhttps://hub.docker.com/repository/docker/criselayala98/api/general)
 
 Para arrancar la aplicación:
 
