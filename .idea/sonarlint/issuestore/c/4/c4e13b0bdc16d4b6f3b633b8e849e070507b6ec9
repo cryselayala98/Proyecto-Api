@@ -1,0 +1,6 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(†ΦΨϊÿÿÿÿ
+g
+java:S2095"QUse try-with-resources or close this "CloseableHttpClient" in a "finally" clause.(ύκ”Κ
+O
+java:S1068"-Remove this unused "webClient" private field.(δ§Ύωÿÿÿÿ8²‡¨Τ2

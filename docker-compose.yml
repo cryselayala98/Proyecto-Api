@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: db
+    environment:
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./script.sql:/docker-entrypoint-initdb.d/script.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - mynetwork
+  cache:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    restart: always
+    environment:
+      - REDIS_PORT=6379
+    volumes:
+      - redis_data:/data
+    networks:
+      - mynetwork
+  api:
+    image: 'docker-spring-boot-postgres'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api
+    depends_on:
+      - db
+      - cache
+    env_file:
+      - .env
+    environment:
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+      - SPRING_REDIS_NETWORK=api_mynetwork
+      - SPRING_REDIS_TIMEOUT=60000
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${DATABASE_NAME}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    ports:
+      - "8080:8080"
+    networks:
+      - mynetwork
+volumes:
+  redis_data:
+    driver: local
+networks:
+  mynetwork:
+    driver: bridge

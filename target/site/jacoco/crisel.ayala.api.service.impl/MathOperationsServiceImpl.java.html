@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MathOperationsServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">api</a> &gt; <a href="index.source.html" class="el_package">crisel.ayala.api.service.impl</a> &gt; <span class="el_source">MathOperationsServiceImpl.java</span></div><h1>MathOperationsServiceImpl.java</h1><pre class="source lang-java linenums">package crisel.ayala.api.service.impl;
+import crisel.ayala.api.externalServices.PercentageService;
+import crisel.ayala.api.model.ObjectOperation;
+import crisel.ayala.api.service.MathOperationsService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+
+@Service(&quot;mathOperationsService&quot;)
+@RequiredArgsConstructor
+public class MathOperationsServiceImpl implements MathOperationsService {
+
+    private final PercentageService percentageService;
+
+    @Override
+    public ObjectOperation process(int num1, int num2) {
+<span class="fc" id="L18">        double res = this.sum(num1, num2);</span>
+<span class="fc" id="L19">        return ObjectOperation.builder()</span>
+<span class="fc" id="L20">                .num1(num1)</span>
+<span class="fc" id="L21">                .num2(num2)</span>
+<span class="fc" id="L22">                .res(this.sumPercentage(res))</span>
+<span class="fc" id="L23">                .build();</span>
+    }
+
+    private int sum(int num1, int num2) {
+<span class="fc" id="L27">        return num1 + num2;</span>
+    }
+
+    private double sumPercentage(double num) {
+<span class="fc" id="L31">        int percentage = percentageService.obtainPercentage();</span>
+
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if(percentage &lt; 0 ) {</span>
+<span class="fc" id="L34">            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, &quot;The service stopped unexpectedly, cached value not obtained&quot;);</span>
+        }
+
+<span class="fc" id="L37">        return num + (num/percentage);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
