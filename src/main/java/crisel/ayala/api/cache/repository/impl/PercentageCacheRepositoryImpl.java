@@ -23,7 +23,6 @@ public class PercentageCacheRepositoryImpl<T extends Percentage> extends RedisRe
     }
 
     public Percentage save(Percentage percentage) {
-        System.out.println("empezando guardado en cache.......................................");
         boolean saved = true;
         try{
             saveHash(HASH_FOR_PERCENTAGE, String.valueOf(percentage.getId()), (T) percentage, timeExpirationInMinutes * 60);
@@ -33,7 +32,6 @@ public class PercentageCacheRepositoryImpl<T extends Percentage> extends RedisRe
             System.out.println("error en cache");
             e.printStackTrace();
         }
-        System.out.println("guardo " + saved);
         return percentage;
     }
 

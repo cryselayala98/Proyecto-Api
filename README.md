@@ -20,5 +20,5 @@ Para probar la aplicación en modo desarrollo:
     
 2. Ejecutar el siguiente comando:
 
-   `mvn clean install`
+   `mvn spring-boot:run`
     
