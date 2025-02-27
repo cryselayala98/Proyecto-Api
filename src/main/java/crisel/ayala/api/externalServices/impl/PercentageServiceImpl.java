@@ -42,12 +42,7 @@ public class PercentageServiceImpl implements PercentageService {
 
     private Percentage savePercentageInCache(Percentage percentage){
 
-        Percentage percentageSave = percentageCacheService.save(percentage);
-        if(percentageSave == null){
-            return Percentage.builder().value(10).build();
-        }
-
-        return percentageSave;
+        return percentageCacheService.save(percentage);
     }
 
     private int getPercentageFromCache() {

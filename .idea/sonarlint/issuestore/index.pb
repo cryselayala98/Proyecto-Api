@@ -26,7 +26,5 @@ Isrc/main/java/crisel/ayala/api/externalServices/ExternalCallsService.java,6\d\
 Ssrc/test/java/crisel/ayala/api/externalServices/impl/PercentageServiceImplTest.java,a\d\ad10bc4319d1f40456908a83cb0e1089c929be83
 g
 7src/test/java/crisel/ayala/api/ApiApplicationTests.java,d\b\db2c8ce8b30dd9565e3affb4d5bfeba90a21d027
-v
-Fsrc/main/java/crisel/ayala/api/externalServices/PercentageService.java,a\f\af517e1c1039570e0ce17ff8d05a92363ee2b891
 q
 Asrc/main/java/crisel/ayala/api/configuration/WebClientConfig.java,9\c\9cdb14893b5532ffe83737ee6bf5c8d1d189642a

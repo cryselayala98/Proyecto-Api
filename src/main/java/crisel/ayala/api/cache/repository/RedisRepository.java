@@ -39,7 +39,7 @@ public abstract class RedisRepository<T extends Serializable> {
         try{
             hashOperations.put(hash, key, value);
         }catch (Exception ex) {
-            //log.error("Error when saving in cache", ex);
+            log.error("Error when saving in cache", ex);
         }
 
         return true;
