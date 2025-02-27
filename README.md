@@ -8,7 +8,7 @@ Para arrancar la aplicación:
 `docker-compose up -d`
 
 
-Para probar la aplicación en modo desarrollo:
+### Para probar la aplicación en modo desarrollo:
 
 1. montar las imágenes de la base de datos y de la caché
 
@@ -20,7 +20,7 @@ Para probar la aplicación en modo desarrollo:
 
    `mvn spring-boot:run`
 
-Para acceder a la documentación de los endpoints
+### Para acceder a la documentación de los endpoints
 
 [Ver en ApiHub](https://app.swaggerhub.com/apis/Criselayala/ApiDoc/1.0#/servers)
 
