@@ -1,10 +1,4 @@
-Proyecto Api
-
-Documentación de los endpoints
-
-
-`code`
-
+# Proyecto Api
 
 [Docker Hub](https://hub.docker.com/r/criselayala98/api)
 
@@ -21,4 +15,8 @@ Para probar la aplicación en modo desarrollo:
 2. Ejecutar el siguiente comando:
 
    `mvn spring-boot:run`
+
+Para acceder a la documentación de los endpoints
+
+`http://localhost:8080/api/webjars/swagger-ui/index.html`
     
