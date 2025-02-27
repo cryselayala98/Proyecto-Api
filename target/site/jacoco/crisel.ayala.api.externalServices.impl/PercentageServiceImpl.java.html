@@ -40,13 +40,19 @@ public class PercentageServiceImpl implements PercentageService {
 <span class="fc" id="L40">        return getPercentageFromCache();</span>
     }
 
-    private void savePercentageInCache(Percentage percentage){
-<span class="fc" id="L44">        percentageCacheService.save(percentage);</span>
-<span class="fc" id="L45">    }</span>
+    private Percentage savePercentageInCache(Percentage percentage){
+
+<span class="fc" id="L45">        Percentage percentageSave = percentageCacheService.save(percentage);</span>
+<span class="pc bpc" id="L46" title="1 of 2 branches missed.">        if(percentageSave == null){</span>
+<span class="fc" id="L47">            return Percentage.builder().value(10).build();</span>
+        }
+
+<span class="nc" id="L50">        return percentageSave;</span>
+    }
 
     private int getPercentageFromCache() {
-<span class="fc" id="L48">        Percentage percentage = percentageCacheService.find(1L);</span>
-<span class="fc bfc" id="L49" title="All 2 branches covered.">        return percentage != null? percentage.getValue() : -1;</span>
+<span class="fc" id="L54">        Percentage percentage = percentageCacheService.find(1L);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        return percentage != null? percentage.getValue() : -1;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

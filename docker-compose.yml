@@ -26,7 +26,7 @@ services:
     networks:
       - mynetwork
   api:
-    image: 'docker-spring-boot-postgres'
+    image: criselayala98/api
     build:
       context: .
       dockerfile: Dockerfile

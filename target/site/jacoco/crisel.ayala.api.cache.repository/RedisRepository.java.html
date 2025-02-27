@@ -39,7 +39,7 @@ public abstract class RedisRepository&lt;T extends Serializable&gt; {
         try{
 <span class="nc" id="L40">            hashOperations.put(hash, key, value);</span>
 <span class="nc" id="L41">        }catch (Exception ex) {</span>
-<span class="nc" id="L42">            log.error(&quot;Error when saving in cache&quot;, ex);</span>
+            //log.error(&quot;Error when saving in cache&quot;, ex);
 <span class="nc" id="L43">        }</span>
 
 <span class="nc" id="L45">        return true;</span>

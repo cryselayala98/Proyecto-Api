@@ -8,47 +8,48 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
 import java.util.Optional;
 
 @Repository
-public class PercentageCacheRepositoryImpl&lt;T extends Percentage&gt; extends RedisRepository&lt;T&gt; implements PercentageCacheRepository {
+public class PercentageCacheRepositoryImpl&lt;T extends Percentage&gt; extends RedisRepository&lt;T&gt; implements PercentageCacheRepository, Serializable {
 
     @Value(&quot;${spring.resolved.cache.ttl:30}&quot;)
     private int timeExpirationInMinutes;
     private static final String HASH_FOR_PERCENTAGE = &quot;PERCENTAGE&quot;;
 
     public PercentageCacheRepositoryImpl(RedisTemplate&lt;String, Object&gt; redisTemplate) {
-<span class="fc" id="L21">        super(redisTemplate);</span>
-<span class="fc" id="L22">    }</span>
+<span class="fc" id="L22">        super(redisTemplate);</span>
+<span class="fc" id="L23">    }</span>
 
     public Percentage save(Percentage percentage) {
-<span class="nc" id="L25">        System.out.println(&quot;empezando guardado en cache.......................................&quot;);</span>
-<span class="nc" id="L26">        boolean saved = true;</span>
+<span class="nc" id="L26">        System.out.println(&quot;empezando guardado en cache.......................................&quot;);</span>
+<span class="nc" id="L27">        boolean saved = true;</span>
         try{
-<span class="nc" id="L28">            saveHash(HASH_FOR_PERCENTAGE, String.valueOf(percentage.getId()), (T) percentage, timeExpirationInMinutes * 60);</span>
+<span class="nc" id="L29">            saveHash(HASH_FOR_PERCENTAGE, String.valueOf(percentage.getId()), (T) percentage, timeExpirationInMinutes * 60);</span>
         }
-<span class="nc" id="L30">        catch (Exception e){</span>
-<span class="nc" id="L31">            saved = false;</span>
-<span class="nc" id="L32">            System.out.println(&quot;error en cache&quot;);</span>
-<span class="nc" id="L33">            e.printStackTrace();</span>
-<span class="nc" id="L34">        }</span>
-<span class="nc" id="L35">        System.out.println(&quot;guardo &quot; + saved);</span>
-<span class="nc" id="L36">        return percentage;</span>
+<span class="nc" id="L31">        catch (Exception e){</span>
+<span class="nc" id="L32">            saved = false;</span>
+<span class="nc" id="L33">            System.out.println(&quot;error en cache&quot;);</span>
+<span class="nc" id="L34">            e.printStackTrace();</span>
+<span class="nc" id="L35">        }</span>
+<span class="nc" id="L36">        System.out.println(&quot;guardo &quot; + saved);</span>
+<span class="nc" id="L37">        return percentage;</span>
     }
 
     public Percentage findById(String id) {
-<span class="nc" id="L40">        Optional&lt;RedisEntity&lt;T&gt;&gt; percentageOpt = findHash(HASH_FOR_PERCENTAGE, id);</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">        if (!percentageOpt.isPresent()) return null;</span>
+<span class="nc" id="L41">        Optional&lt;RedisEntity&lt;T&gt;&gt; percentageOpt = findHash(HASH_FOR_PERCENTAGE, id);</span>
+<span class="nc bnc" id="L42" title="All 2 branches missed.">        if (!percentageOpt.isPresent()) return null;</span>
 
-<span class="nc" id="L43">        return percentageOpt.get().getValue();</span>
+<span class="nc" id="L44">        return percentageOpt.get().getValue();</span>
     }
 
     public boolean existsById(String id) {
-<span class="nc" id="L47">        return findHash(HASH_FOR_PERCENTAGE, id).isPresent();</span>
+<span class="nc" id="L48">        return findHash(HASH_FOR_PERCENTAGE, id).isPresent();</span>
     }
 
     public boolean deleteById(String id) {
-<span class="nc" id="L51">        return deleteHash(HASH_FOR_PERCENTAGE, id);</span>
+<span class="nc" id="L52">        return deleteHash(HASH_FOR_PERCENTAGE, id);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
