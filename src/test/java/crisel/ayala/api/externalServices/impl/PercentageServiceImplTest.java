@@ -35,23 +35,20 @@ class PercentageServiceImplTest {
 
     @Test
     void testObtainPercentage_SuccessfulExternalCall() {
-        // Arrange
         Percentage mockPercentage = new Percentage();
         mockPercentage.setValue(10);
         when(externalCallsService.processGetRequest(anyString(), eq(Percentage.class)))
                 .thenReturn(mockPercentage);
 
-        // Act
         int result = percentageService.obtainPercentage();
 
-        // Assert
         assertEquals(10, result);
-        verify(percentageCacheService).save(mockPercentage); // Ensure it's cached
+        verify(percentageCacheService).save(mockPercentage);
     }
 
     @Test
     void testObtainPercentage_NullExternalCall_FallbackToCache() {
-        // Arrange
+
         when(externalCallsService.processGetRequest(anyString(), eq(Percentage.class)))
                 .thenReturn(null);
 
@@ -59,24 +56,20 @@ class PercentageServiceImplTest {
         cachedPercentage.setValue(20);
         when(percentageCacheService.find(1L)).thenReturn(cachedPercentage);
 
-        // Act
         int result = percentageService.obtainPercentage();
 
-        // Assert
         assertEquals(20, result);
     }
 
     @Test
     void testObtainPercentage_NoExternalCall_NoCache_ReturnsNegativeOne() {
-        // Arrange
+
         when(externalCallsService.processGetRequest(anyString(), eq(Percentage.class)))
                 .thenReturn(null);
         when(percentageCacheService.find(1L)).thenReturn(null);
 
-        // Act
         int result = percentageService.obtainPercentage();
 
-        // Assert
         assertEquals(-1, result);
     }
 }

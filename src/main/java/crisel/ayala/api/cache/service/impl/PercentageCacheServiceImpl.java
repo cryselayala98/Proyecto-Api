@@ -20,7 +20,6 @@ public class PercentageCacheServiceImpl<T extends Percentage> implements Seriali
     public Percentage save(Percentage percentage){
         log.info("Saving in cache..." + percentage.toString());
         Percentage percentageSave =  percentageCacheRepository.save(percentage);
-        System.out.println(percentageSave);
         return percentageSave;
     }
 

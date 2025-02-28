@@ -1,7 +1,6 @@
 package crisel.ayala.api.service.impl;
 
 import crisel.ayala.api.externalServices.PercentageService;
-import crisel.ayala.api.model.ObjectOperation;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,9 +23,9 @@ class MathOperationsServiceImplTest {
 
     @Test
     void testProcess_SuccessfulCalculation() {
-        when(percentageService.obtainPercentage()).thenReturn(10); // 10% increase
-        Double result = mathOperationsService.process(100, 50).getRes(); // 100 + 50 = 150, then +10%
-        assertEquals(165.0, result); // 150 + (150/10) = 165
+        when(percentageService.obtainPercentage()).thenReturn(10);
+        Double result = mathOperationsService.process(100, 50).getRes();
+        assertEquals(165.0, result);
     }
 
     @Test

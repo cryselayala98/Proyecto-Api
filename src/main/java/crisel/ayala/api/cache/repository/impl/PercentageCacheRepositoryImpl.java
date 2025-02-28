@@ -24,7 +24,7 @@ public class PercentageCacheRepositoryImpl<T extends Percentage> extends RedisRe
 
     public Percentage save(Percentage percentage) {
 
-        saveHash(HASH_FOR_PERCENTAGE, String.valueOf(percentage.getId()), (T) percentage, timeExpirationInMinutes * 60);
+        boolean saved = saveHash(HASH_FOR_PERCENTAGE, String.valueOf(percentage.getId()), (T) percentage, timeExpirationInMinutes * 60);
         return percentage;
     }
 

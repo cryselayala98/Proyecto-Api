@@ -10,8 +10,6 @@ q
 Asrc/main/java/crisel/ayala/api/repository/ResponseRepository.java,8\6\86c8c8fb5b7c31fc65a73c930968bcf302caeea1
 g
 7src/main/java/crisel/ayala/api/utilities/logFormat.java,d\9\d9e4f8a60bf5130266b636f304213f0962b2352b
-k
-;src/main/java/crisel/ayala/api/cache/model/RedisEntity.java,e\0\e05ac61f4363ce3f55b14a093ac86e48516cc681
 e
 5src/main/java/crisel/ayala/api/entity/Percentage.java,0\4\0442f12efcee12569f5855c258b28952e196fa3c
 k
@@ -22,8 +20,6 @@ b
 Rsrc/main/java/crisel/ayala/api/externalServices/impl/ExternalCallsServiceImpl.java,c\4\c4e13b0bdc16d4b6f3b633b8e849e070507b6ec9
 y
 Isrc/main/java/crisel/ayala/api/externalServices/ExternalCallsService.java,6\d\6dccd6b2f892318cb5f8c46f9016fa1160350da5
-ƒ
-Ssrc/test/java/crisel/ayala/api/externalServices/impl/PercentageServiceImplTest.java,a\d\ad10bc4319d1f40456908a83cb0e1089c929be83
 g
 7src/test/java/crisel/ayala/api/ApiApplicationTests.java,d\b\db2c8ce8b30dd9565e3affb4d5bfeba90a21d027
 q
