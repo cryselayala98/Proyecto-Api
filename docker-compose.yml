@@ -24,7 +24,7 @@ services:
     networks:
       - mynetwork
   api:
-    image: api
+    image: criselayala98/api
     build:
       context: .
       dockerfile: Dockerfile

@@ -2,7 +2,7 @@
 
 [Docker Hub](https://hub.docker.com/repository/docker/criselayala98/api/general)
 
-Para arrancar la aplicación:
+Para arrancar la aplicación:     
 
 
 `docker-compose up -d`
