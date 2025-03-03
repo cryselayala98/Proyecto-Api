@@ -10,7 +10,7 @@ Para arrancar la aplicación:
 
 ### Para probar la aplicación en modo desarrollo:
 
-1. montar las imágenes de la base de datos y de la caché
+1. Montar las imágenes de la base de datos y de la caché
 
    `docker-compose up -d db`
 
